@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ISART Entertainment</title>
+<meta name="description" content="ISART Entertainment : conception artistique et technique de spectacles, événements et espaces culturels.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--stage:#0d0e13;--stage-2:#14161d;--ink:#f1eee5;--muted:#a9abb7;--gold:#ffe577;--gold-deep:#e9c94a;--wash:#cfe2ff;--line:rgba(241,238,229,.14);--f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;--f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;--f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--stage);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1160px;margin-inline:auto;padding-inline:clamp(16px,5vw,56px)}
+
+.bar{position:sticky;top:0;z-index:20;background:rgba(13,14,19,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;flex-wrap:wrap;padding-block:8px}
+.bar b{font-family:var(--f-display);font-weight:800;letter-spacing:.02em;font-size:1.05rem}
+.bar b span{color:var(--gold)}
+.bar nav{display:flex;gap:clamp(12px,2.4vw,28px);flex-wrap:wrap}
+.bar nav a{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;text-decoration:none;color:var(--muted)}
+.bar nav a:hover{color:var(--gold)}
+
+.hero{position:relative;overflow:hidden;padding-block:clamp(40px,7vw,88px) clamp(48px,7vw,96px)}
+.beam{position:absolute;top:-10%;width:46%;height:120%;pointer-events:none;transform-origin:50% 0;filter:blur(2px);clip-path:polygon(46% 0,54% 0,100% 100%,0 100%)}
+.beam.gold{left:2%;background:linear-gradient(180deg,rgba(255,229,119,.34),rgba(255,229,119,0) 78%);animation:sway-a 11s ease-in-out infinite alternate}
+.beam.blue{right:2%;background:linear-gradient(180deg,rgba(207,226,255,.26),rgba(207,226,255,0) 78%);animation:sway-b 13s ease-in-out infinite alternate}
+@keyframes sway-a{from{transform:rotate(-7deg)}to{transform:rotate(5deg)}}
+@keyframes sway-b{from{transform:rotate(6deg)}to{transform:rotate(-5deg)}}
+.hero .wrap{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(20px,3vw,32px)}
+.logo{width:min(100%,760px);height:auto;display:block}
+.tagline{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,6.4vw,4.4rem);line-height:1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.tagline span{display:inline-block}
+.tagline span:nth-child(2){color:var(--gold)}
+.lead{max-width:62ch;font-size:clamp(1.05rem,1.6vw,1.2rem);margin:0}
+.lead.sub{color:var(--muted);font-size:1rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--f-mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;text-decoration:none;padding:14px 22px;border-radius:4px;border:1px solid var(--gold)}
+.btn.solid{background:var(--gold);color:#1b1704;font-weight:500}
+.btn.solid:hover{background:var(--gold-deep)}
+.btn.ghost{color:var(--gold)}
+.btn.ghost:hover{background:rgba(255,229,119,.1)}
+
+section{padding-block:clamp(48px,7vw,92px);border-top:1px solid var(--line)}
+.label{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin:0 0 14px}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,4.2vw,3rem);line-height:1.05;letter-spacing:-.015em;margin:0 0 clamp(24px,4vw,44px);text-wrap:balance;max-width:22ch}
+h3{font-family:var(--f-display);font-weight:700;font-size:1.35rem;line-height:1.2;margin:0 0 12px;text-wrap:balance}
+
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(16px,2.4vw,28px)}
+.svc{background:var(--stage-2);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.svc p{margin:0;color:var(--muted);font-size:.97rem}
+.svc ul{list-style:none;margin:0;padding:0}
+.svc li{padding:9px 0;border-top:1px solid var(--line);font-size:.96rem}
+.svc li:first-child{border-top:0;padding-top:0}
+.svc .end{color:var(--ink)}
+.svc.wide{grid-column:1/-1}
+.svc.wide p{max-width:70ch}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:.97rem}
+.chips li:hover{border-color:var(--gold);color:var(--gold)}
+.who{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+@media(min-width:860px){.who{grid-template-columns:5fr 7fr;gap:56px;align-items:start}}
+.who h2{margin-bottom:0}
+.who p{margin:0 0 22px;color:var(--muted)}
+
+.vision{background:linear-gradient(180deg,var(--stage),#10131c)}
+.vision blockquote{margin:0 0 32px;font-family:var(--f-display);font-weight:800;font-size:clamp(1.7rem,4.6vw,3.3rem);line-height:1.08;letter-spacing:-.015em;max-width:24ch;text-wrap:balance}
+.vision blockquote em{font-style:normal;color:var(--gold)}
+.vision .cols{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;max-width:900px}
+@media(min-width:760px){.vision .cols{grid-template-columns:1fr 1fr;gap:40px}}
+.vision .cols p{margin:0;color:var(--muted)}
+
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.c{background:var(--stage-2);border:1px solid var(--line);border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.c .k{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.c .v{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,2.4vw,1.35rem);overflow-wrap:anywhere}
+.c a.v{text-decoration:none}
+.c a.v:hover{color:var(--gold)}
+.copy{align-self:flex-start;margin-top:8px;font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;background:transparent;color:var(--gold);border:1px solid var(--line);border-radius:4px;padding:7px 12px;cursor:pointer}
+.copy:hover{border-color:var(--gold)}
+.linkedin-btn{align-self:flex-start;display:inline-flex;align-items:center;margin-top:8px;padding:9px 16px;border-radius:8px;background:#0A66C2;color:#fff;text-decoration:none;font-size:13px;font-weight:600;transition:.25s ease}
+.linkedin-btn:hover{background:#084d91;transform:translateY(-1px)}
+
+footer{border-top:1px solid var(--line);padding-block:28px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;color:var(--muted);font-size:.88rem}
+footer .m{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em}
+
+/* ===== TEAM ===== */
+.isart-team{padding:100px 24px;background:radial-gradient(circle at 50% 0%,rgba(255,229,119,.08),transparent 40%),var(--stage);overflow:hidden}
+.isart-team-inner{width:100%;max-width:1400px;margin:0 auto}
+.isart-team-head{text-align:center;margin-bottom:55px}
+.isart-team-kicker{margin:0 0 10px;color:var(--gold);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.18em}
+.isart-team-sub{margin:0;color:var(--muted);font-size:1.15rem}
+.isart-team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;padding:0;margin:0;list-style:none}
+.isart-team-card{position:relative;min-width:0;background:var(--stage-2);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.isart-team-card:hover{transform:translateY(-8px);border-color:rgba(255,229,119,.45);box-shadow:0 25px 60px rgba(0,0,0,.35)}
+.isart-team-frame{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:#08090d}
+.isart-team-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0;transform:scale(1);transition:opacity 1s ease,transform 4s ease;filter:saturate(.92)}
+.isart-team-img.is-active{opacity:1;transform:scale(1.03)}
+.isart-team-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:20px;background:linear-gradient(to top,rgba(5,6,9,.8),rgba(5,6,9,.15) 45%,transparent 70%);opacity:0;transition:opacity .35s ease;pointer-events:none}
+.isart-team-card:hover .isart-team-overlay{opacity:1}
+.isart-team-view{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border:1px solid rgba(255,229,119,.35);border-radius:999px;background:rgba(13,14,19,.72);backdrop-filter:blur(10px);color:var(--gold);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.isart-team-body{padding:20px}
+.isart-team-name{margin:0 0 7px;font-family:var(--f-body);font-size:19px;font-weight:700}
+.isart-team-role{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+@media(max-width:950px){.isart-team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.isart-team{padding:75px 16px}.isart-team-grid{gap:15px}.isart-team-body{padding:16px}.isart-team-name{font-size:17px}.isart-team-role{font-size:12px}.isart-team-overlay{display:none}}
+@media(max-width:400px){.isart-team-grid{grid-template-columns:1fr}}
+
+/* SweetAlert popup */
+.isart-swal-popup{width:min(420px,90vw)!important;padding:0!important;overflow:hidden!important;background:#14161d!important;color:#f1eee5!important;border-radius:14px!important;border:1px solid rgba(241,238,229,.14)!important;box-shadow:0 30px 100px rgba(0,0,0,.55)!important}
+.isart-swal-image{width:100%!important;height:auto!important;max-height:60vh!important;aspect-ratio:4/5;max-width:none!important;margin:0!important;object-fit:cover!important;object-position:center top!important;border-radius:0!important;display:block!important}
+.isart-swal-title{margin:18px 20px 6px!important;padding:0!important;color:#f1eee5!important;font-family:var(--f-display)!important;font-size:26px!important;font-weight:800!important}
+.isart-swal-content{margin:0 0 22px!important;padding:0 20px!important}
+.isart-swal-role{display:block;margin-bottom:10px;color:#ffe577;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.isart-swal-description{margin:0 auto;max-width:350px;color:#a9abb7;font-size:13px;line-height:1.55}
+.isart-swal-close{position:absolute!important;top:8px!important;right:10px!important;z-index:50!important;color:#f1eee5!important;font-size:28px!important}
+.isart-swal-close:hover{color:#ffe577!important}
+.swal2-backdrop-show{background:rgba(5,6,9,.72)!important;backdrop-filter:blur(8px)}
+
+@media(prefers-reduced-motion:reduce){.beam{animation:none}html{scroll-behavior:auto}.isart-team-img,.isart-team-card{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <b>ISART <span>Entertainment</span></b>
+    <nav aria-label="Navigation principale">
+      <a href="#services">Services</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#vision">Vision</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="beam gold" aria-hidden="true"></div>
+    <div class="beam blue" aria-hidden="true"></div>
+    <div class="wrap">
+      <!-- Mets ton logo ici : img/logo.png -->
+      <img class="logo" src="img/logo.png" width="954" height="403" alt="Logo ISART Entertainment">
+      <h1 class="tagline"><span>Concevoir.</span> <span>Créer.</span> <span>Réaliser.</span></h1>
+      <p class="lead">ISART Entertainment est une société spécialisée dans la conception artistique et technique des spectacles, événements et espaces culturels.</p>
+      <p class="lead sub">Nous accompagnons les projets de la première idée jusqu’à leur réalisation, en développant une identité artistique, visuelle et technique cohérente et singulière.</p>
+      <div class="cta">
+        <a class="btn solid" href="#services">Nos services</a>
+        <a class="btn ghost" href="#contact">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="approche">
+    <div class="wrap">
+      <p class="label">Notre approche</p>
+      <h2>La technique au service de la création</h2>
+      <p class="lead" style="max-width:68ch">Notre approche repose sur une conviction : utiliser la technique pour valoriser la création artistique. La lumière, la vidéo, le mapping, le son et la scénographie deviennent ainsi des outils au service de la vision artistique, permettant de donner forme aux idées, de créer des univers et de renforcer l’expérience du public.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="label">Nos services</p>
+      <h2>De la première idée au dernier projecteur</h2>
+      <div class="services">
+        <article class="svc">
+          <h3>Conception artistique et visuelle</h3>
+          <p>Nous développons l’univers visuel et scénique des spectacles et événements à travers :</p>
+          <ul>
+            <li>Conception lumière</li>
+            <li>Conception vidéo et vidéo-scénographie</li>
+            <li>Mapping et effets visuels</li>
+            <li>Scénographie</li>
+            <li>Conception de scènes</li>
+            <li>Création d’identités visuelles scéniques</li>
+            <li>Conception 3D et visualisation des projets</li>
+          </ul>
+          <p class="end">Notre objectif est de transformer une intention artistique en un langage visuel cohérent, en travaillant sur l’espace, la lumière, l’image, le mouvement, les volumes et les atmosphères.</p>
+        </article>
+
+        <article class="svc">
+          <h3>Bureaux d’étude &amp; équipements</h3>
+          <p>ISART Entertainment accompagne également les espaces culturels, salles de spectacle et structures artistiques dans l’étude, la conception et la mise en place de leurs équipements.</p>
+          <ul>
+            <li>Études techniques et bureaux d’étude</li>
+            <li>Étude et analyse des besoins</li>
+            <li>Conception des installations techniques</li>
+            <li>Étude d’éclairage scénique</li>
+            <li>Étude des systèmes son et vidéo</li>
+            <li>Étude des équipements scéniques</li>
+            <li>Conception et aménagement technique des espaces culturels</li>
+            <li>Sélection et dimensionnement des équipements</li>
+            <li>Plans et documents techniques</li>
+            <li>Accompagnement dans l’installation et la mise en service des équipements</li>
+            <li>Suivi technique jusqu’à la réalisation</li>
+          </ul>
+          <p class="end">De la conception 3D et des plans techniques jusqu’à l’installation et la mise en service, nous proposons une approche globale permettant de créer des espaces fonctionnels, adaptés aux besoins artistiques et aux exigences techniques.</p>
+        </article>
+
+        <article class="svc">
+          <h3>Direction technique &amp; gestion de spectacle</h3>
+          <p>Nous assurons la coordination entre les différents intervenants afin de garantir la cohérence et le bon déroulement du projet.</p>
+          <ul>
+            <li>Direction technique</li>
+            <li>Régie et gestion du spectacle</li>
+            <li>Coordination des équipes artistiques et techniques</li>
+            <li>Organisation des balances et répétitions</li>
+            <li>Communication entre les différents départements</li>
+            <li>Coordination des prestataires</li>
+            <li>Suivi technique avant et pendant l’événement</li>
+            <li>Supervision du déroulement du spectacle</li>
+          </ul>
+        </article>
+
+        <article class="svc wide">
+          <h3>Formation &amp; transmission</h3>
+          <p>ISART Entertainment développe également des activités de formation et de transmission de compétences dans les domaines artistiques et techniques du spectacle vivant.</p>
+          <p>Nous partageons notre expérience avec les jeunes professionnels, techniciens, artistes et acteurs culturels afin de contribuer au développement des compétences dans le secteur.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ÉQUIPE (HTML statique) ===================== -->
+  <section class="isart-team" id="equipe">
+    <div class="isart-team-inner">
+      <header class="isart-team-head">
+        <p class="isart-team-kicker">Notre équipe</p>
+        <p class="isart-team-sub">Des profils complémentaires. Une même vision.</p>
+      </header>
+
+      <ul class="isart-team-grid">
+
+        <li class="isart-team-card" tabindex="0" role="button"
+            data-team-name="Ilyass Elmarbouh"
+            data-team-role="CEO &amp; Directeur Technique"
+            data-team-description="Spécialisé dans la direction technique, la régie de spectacle et la conception lumière, il accompagne les projets dans leurs dimensions artistique, technique et organisationnelle.">
+          <div class="isart-team-frame">
+            <img class="isart-team-img is-active" src="img/team/Ilyass%20Elmarbouh.png" alt="Ilyass Elmarbouh - ISART Entertainment" width="800" height="1000" decoding="async" loading="lazy">
+            <img class="isart-team-img" src="img/team/Ilyass%20Elmarbouh1.png" alt="Ilyass Elmarbouh - ISART Entertainment" width="800" height="1000" decoding="async" loading="lazy">
+            <div class="isart-team-overlay"><span class="isart-team-view">Voir le profil <span>↗</span></span></div>
+          </div>
+          <div class="isart-team-body">
+            <h3 class="isart-team-name">Ilyass Elmarbouh</h3>
+            <p class="isart-team-role">CEO &amp; Directeur Technique</p>
+          </div>
+        </li>
+
+        <li class="isart-team-card" tabindex="0" role="button"
+            data-team-name="Mohammed Elouariti"
+            data-team-role="Responsable Communication &amp; Médiation"
+            data-team-description="Il assure la communication, la médiation et les relations avec les différents acteurs et partenaires des projets.">
+          <div class="isart-team-frame">
+            <img class="isart-team-img is-active" src="img/team/Mohammed%20Elouariti.png" alt="Mohammed Elouariti - ISART Entertainment" width="800" height="1000" decoding="async" loading="lazy">
+            <img class="isart-team-img" src="img/team/Mohammed%20Elouariti1.png" alt="Mohammed Elouariti - ISART Entertainment" width="800" height="1000" decoding="async" loading="lazy">
+            <div class="isart-team-overlay"><span class="isart-team-view">Voir le profil <span>↗</span></span></div>
+          </div>
+          <div class="isart-team-body">
+            <h3 class="isart-team-name">Mohammed Elouariti</h3>
+            <p class="isart-team-role">Responsable Communication &amp; Médiation</p>
+          </div>
+        </li>
+
+        <li class="isart-team-card" tabindex="0" role="button"
+            data-team-name="Adham Cherkaoui"
+            data-team-role="Ingénieur du son"
+            data-team-description="Spécialisé dans la conception et la gestion sonore des spectacles et événements, il assure la dimension technique et artistique liée au son.">
+          <div class="isart-team-frame">
+            <img class="isart-team-img is-active" src="img/team/Adham%20cherkaoui.png" alt="Adham Cherkaoui - ISART Entertainment" width="800" height="1000" decoding="async" loading="lazy">
+            <img class="isart-team-img" src="img/team/Adham%20cherkaoui1.png" alt="Adham Cherkaoui - ISART Entertainment" width="800" height="1000" decoding="async" loading="lazy">
+            <div class="isart-team-overlay"><span class="isart-team-view">Voir le profil <span>↗</span></span></div>
+          </div>
+          <div class="isart-team-body">
+            <h3 class="isart-team-name">Adham Cherkaoui</h3>
+            <p class="isart-team-role">Ingénieur du son</p>
+          </div>
+        </li>
+
+        <li class="isart-team-card" tabindex="0" role="button"
+            data-team-name="Saad HjjiJj"
+            data-team-role="Artiste visuel &amp; Concepteur Scène et Lumière"
+            data-team-description="Artiste visuel et concepteur, il développe des univers visuels et scéniques à travers la lumière, l’espace et les nouvelles formes de création visuelle.">
+          <div class="isart-team-frame">
+            <img class="isart-team-img is-active" src="img/team/Saad%20HjjiJj.png" alt="Saad HjjiJj - ISART Entertainment" width="800" height="1000" decoding="async" loading="lazy">
+            <img class="isart-team-img" src="img/team/Saad%20HjjiJj1.png" alt="Saad HjjiJj - ISART Entertainment" width="800" height="1000" decoding="async" loading="lazy">
+            <div class="isart-team-overlay"><span class="isart-team-view">Voir le profil <span>↗</span></span></div>
+          </div>
+          <div class="isart-team-body">
+            <h3 class="isart-team-name">Saad HjjiJj</h3>
+            <p class="isart-team-role">Artiste visuel &amp; Concepteur Scène et Lumière</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <section id="partenaires">
+    <div class="wrap who">
+      <div>
+        <p class="label">Partenaires</p>
+        <h2>Avec qui travaillons-nous ?</h2>
+      </div>
+      <div>
+        <p>Nous collaborons avec différents acteurs du secteur culturel, artistique et événementiel :</p>
+        <ul class="chips">
+          <li>Festivals</li>
+          <li>Artistes et leurs équipes</li>
+          <li>Organismes culturels</li>
+          <li>Associations culturelles</li>
+          <li>Sociétés et structures culturelles</li>
+          <li>Institutions et espaces culturels</li>
+          <li>Producteurs et organisateurs d’événements</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision" class="vision">
+    <div class="wrap">
+      <p class="label">Notre vision</p>
+      <blockquote>Nous utilisons la technique pour <em>valoriser la création artistique.</em></blockquote>
+      <div class="cols">
+        <p>Chez ISART Entertainment, nous considérons la technique comme un outil de création et d’expression artistique.</p>
+        <p>Notre travail consiste à mettre notre savoir-faire technique au service des artistes et des créateurs afin de valoriser leur vision, renforcer leur identité et donner vie à leurs idées.</p>
+        <p>Notre ambition est de créer des projets où l’art et la technique dialoguent, se complètent et donnent naissance à des expériences uniques.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <p class="label">Contact</p>
+      <h2>Parlons de votre prochain projet</h2>
+      <div class="contact-grid">
+        <div class="c">
+          <span class="k">Téléphone</span>
+          <a class="v" href="tel:+212647806703">0647806703</a>
+          <button class="copy" type="button" data-copy="0647806703">Copier le numéro</button>
+        </div>
+        <div class="c">
+          <span class="k">Email</span>
+          <a class="v" href="mailto:isartentertainment@gmail.com">isartentertainment@gmail.com</a>
+          <button class="copy" type="button" data-copy="isartentertainment@gmail.com">Copier l’adresse</button>
+        </div>
+        <div class="c">
+          <span class="k">LinkedIn</span>
+          <span class="v">ISART Entertainment</span>
+          <a href="https://www.linkedin.com/in/isart-entertainment-a83584397/" target="_blank" rel="noopener noreferrer" class="linkedin-btn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="m">ISART Entertainment · Concevoir. Créer. Réaliser.</span>
+    <span>Spectacles, événements et espaces culturels</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+/* Boutons "Copier" */
+document.querySelectorAll('.copy').forEach(function (btn) {
+  var label = btn.textContent;
+  btn.addEventListener('click', function () {
+    var text = btn.getAttribute('data-copy');
+    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = label; }, 1600); }
+    function fallback() {
+      var r = document.createRange();
+      r.selectNodeContents(btn.parentNode.querySelector('.v'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      done('Sélectionné');
+    }
+    try { navigator.clipboard.writeText(text).then(function () { done('Copié'); }, fallback); }
+    catch (e) { fallback(); }
+  });
+});
+
+/* Équipe : diaporama des photos + popup profil */
+document.addEventListener('DOMContentLoaded', function () {
+  var cards = document.querySelectorAll('.isart-team-card');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  cards.forEach(function (card, index) {
+    var images = card.querySelectorAll('.isart-team-img');
+
+    if (images.length > 1 && !reduce) {
+      var current = 0;
+      setTimeout(function () {
+        setInterval(function () {
+          images[current].classList.remove('is-active');
+          current = (current + 1) % images.length;
+          images[current].classList.add('is-active');
+        }, 3500);
+      }, index * 450);
+    }
+
+    function openProfile() {
+      var active = card.querySelector('.isart-team-img.is-active');
+      Swal.fire({
+        imageUrl: active ? active.src : '',
+        imageAlt: card.dataset.teamName,
+        title: card.dataset.teamName,
+        html: '<span class="isart-swal-role">' + card.dataset.teamRole + '</span>' +
+              '<p class="isart-swal-description">' + card.dataset.teamDescription + '</p>',
+        showConfirmButton: false,
+        showCloseButton: true,
+        background: '#14161d',
+        color: '#f1eee5',
+        padding: 0,
+        focusConfirm: false,
+        customClass: {
+          popup: 'isart-swal-popup',
+          image: 'isart-swal-image',
+          htmlContainer: 'isart-swal-content',
+          title: 'isart-swal-title',
+          closeButton: 'isart-swal-close'
+        }
+      });
+    }
+
+    card.addEventListener('click', openProfile);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProfile(); }
+    });
+  });
+});
+</script>
+</body>
+</html>
